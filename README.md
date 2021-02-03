@@ -65,7 +65,19 @@ ___
 Please use a private repo just email us when you are done. 
 
 ## Your Solution Starts HERE!!!
-Use this area to describe your solution as requested in *_Section B_*. 
+1.	In the data lake, start off by creating datasets (these datasets are the target of where the data will reside). Creating the necessary AWS Glue output dbs for our source and prepared layer.
+2.	For us to use to any services within AWS. We need a role with policy document attached to it, providing access and permissions
+3.	We will use parameter store to store our usernames.
+4.	We run CloudFormation by creating new stack by uploading a template (yaml file) where we update the template with the correct VPC info, repo link, ITSM API Key etc.
+5.	Proceed to running a CodeBuild which will create the AWS resources we have configured in our in our repo under Assets & Infrastructure (Main.tf, Ingest.json, glue jobs).
+6.	After a successful CodeBuild we check if the tables were created in DynamoDB and to see the structure created.
+7.	All the passwords for the dbs are stored in system manager,We can then run glue job to load the data into the raw layer in parallel we check AWS CloudWatch group logs to see the progress of the job.
+8.	After a successful load, we can go back to check to our data lake to check if the data is in the S3 bucket. Congratulations you’ve come a long way.
+9.	In order for us to move the data from the raw layer to the source layer, we can run AWS Step functions which sequences our Lambda functions, by including a run next statement in your configs you trigger the next job which is to load data onto prepared layer.
+10.	To also check progress of the step function, we use the AWS CloudWatch to monitor the progress.
+11.	Once the step function has succeeded, we can navigate back to the data lake and in he prepared dataset to check if the data has moved from source to prepared.
+12.	Once the data is in the prepared layer, we can query the data in the  AWS glue data catalog  using Athena
+
 
 
 ## Additional Comments / Information / Concerns

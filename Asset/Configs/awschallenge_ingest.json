@@ -1,0 +1,47 @@
+{
+"config_name": " ",
+"config_type": "file ingest ",
+"etl_job":"file_ingest_default",
+"job_settings":{
+  "cron": ""
+},
+
+
+"table_config": [
+    {
+        "columns":[
+            {
+                "name" : "",
+                "type" : ""
+ 
+            },
+            {
+                "name" : "",
+                "type" : ""
+ 
+            },
+            {
+                "name" : "",
+                "type" : ""
+ 
+            }
+            
+
+        ]
+    }
+],
+"target":{
+    "aws_region":"",
+    "kms_key_arn":""
+},
+"run_next" : [
+    {
+        "config_name":"awschallenge_source",
+        "config_type":"source",
+        "step_function_name":"step_function_name"
+    }
+]
+}
+
+
+
